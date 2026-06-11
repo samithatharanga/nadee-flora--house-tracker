@@ -1,0 +1,608 @@
+/* ============================================================
+   Nadee Flora House - Live Order Tracker Dashboard
+   Style Sheet v1.0 | Production-Ready | ST Imagix
+   ============================================================ */
+
+/* ============================================================
+   CSS Custom Properties & Theme Variables
+   ============================================================ */
+
+:root {
+    /* Light Mode Colors */
+    --color-primary-pink: #ec4899;
+    --color-primary-rose-gold: #d4a574;
+    --color-primary-emerald: #10b981;
+    --color-primary-emerald-dark: #059669;
+    --color-bg-light: #fafaf9;
+    --color-bg-light-secondary: #f5f5f4;
+    --color-text-light: #1f2937;
+    --color-text-light-secondary: #6b7280;
+    --color-border-light: #f3f4f6;
+    
+    /* Dark Mode Colors */
+    --color-bg-dark: #0f172a;
+    --color-bg-dark-secondary: #1e293b;
+    --color-text-dark: #f1f5f9;
+    --color-text-dark-secondary: #cbd5e1;
+    --color-border-dark: #334155;
+    
+    /* Glassmorphism */
+    --glass-blur: 20px;
+    --glass-opacity: 0.4;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Theme Override */
+[data-theme="dark"] {
+    --color-bg: var(--color-bg-dark);
+    --color-bg-secondary: var(--color-bg-dark-secondary);
+    --color-text: var(--color-text-dark);
+    --color-text-secondary: var(--color-text-dark-secondary);
+    --color-border: var(--color-border-dark);
+}
+
+[data-theme="light"] {
+    --color-bg: var(--color-bg-light);
+    --color-bg-secondary: var(--color-bg-light-secondary);
+    --color-text: var(--color-text-light);
+    --color-text-secondary: var(--color-text-light-secondary);
+    --color-border: var(--color-border-light);
+}
+
+/* ============================================================
+   Global Styles & Reset
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: background-color var(--transition-base), color var(--transition-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Light Mode Palette
+   ============================================================ */
+
+.light\:bg-light-bg {
+    background-color: var(--color-bg-light);
+}
+
+.light\:text-gray-900 {
+    color: var(--color-text-light);
+}
+
+/* ============================================================
+   Dark Mode Palette
+   ============================================================ */
+
+.dark\:bg-dark-bg {
+    background-color: var(--color-bg-dark);
+}
+
+.dark\:text-white {
+    color: var(--color-text-dark);
+}
+
+/* ============================================================
+   Custom Utilities & Extensions
+   ============================================================ */
+
+/* Rose Gold Color Utilities */
+.text-rose-gold {
+    color: var(--color-primary-rose-gold);
+}
+
+.bg-rose-gold {
+    background-color: var(--color-primary-rose-gold);
+}
+
+.border-rose-gold {
+    border-color: var(--color-primary-rose-gold);
+}
+
+.hover\:text-rose-gold:hover {
+    color: var(--color-primary-rose-gold);
+}
+
+.from-rose-gold {
+    --tw-gradient-from: var(--color-primary-rose-gold);
+}
+
+.to-rose-gold {
+    --tw-gradient-to: var(--color-primary-rose-gold);
+}
+
+/* ============================================================
+   Glassmorphism & Backdrop Blur Effects
+   ============================================================ */
+
+.glassmorphism {
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background-color: rgba(255, 255, 255, var(--glass-opacity));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glassmorphism {
+    background-color: rgba(15, 23, 42, var(--glass-opacity));
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* ============================================================
+   Theme Toggle Switch
+   ============================================================ */
+
+#themeToggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#themeToggle svg {
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+#themeToggle:hover svg {
+    transform: scale(1.1);
+}
+
+/* ============================================================
+   Header Styling
+   ============================================================ */
+
+header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 245, 240, 0.95) 100%);
+}
+
+.dark header {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+}
+
+header h1 {
+    background: linear-gradient(135deg, #ec4899 0%, #d4a574 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   Progress Tracker Styles
+   ============================================================ */
+
+/* Progress Line SVG */
+#progressLine {
+    filter: drop-shadow(0 2px 4px rgba(16, 185, 129, 0.2));
+}
+
+/* Step Container Animation */
+[data-step] {
+    position: relative;
+    transition: transform var(--transition-base);
+}
+
+[data-step]:hover {
+    transform: translateY(-2px);
+}
+
+/* Step Circle - Active State */
+.step-active {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 
+            0 0 0 0 rgba(16, 185, 129, 0.7),
+            0 10px 15px -3px rgba(16, 185, 129, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 0 10px rgba(16, 185, 129, 0),
+            0 10px 15px -3px rgba(16, 185, 129, 0.3);
+    }
+}
+
+/* Step Circle - Completed State */
+.step-completed {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: white !important;
+    animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scale-in {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Step Circle - Inactive State */
+.step-inactive {
+    background-color: #d1d5db;
+    color: #9ca3af;
+}
+
+.dark .step-inactive {
+    background-color: #475569;
+    color: #94a3b8;
+}
+
+/* ============================================================
+   Order Summary Card (Glassmorphism)
+   ============================================================ */
+
+.order-summary-card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(250, 188, 212, 0.15) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    transition: 
+        box-shadow var(--transition-base),
+        transform var(--transition-base);
+}
+
+.order-summary-card:hover {
+    box-shadow: 
+        0 20px 40px -5px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.dark .order-summary-card {
+    background: linear-gradient(
+        135deg,
+        rgba(30, 41, 59, 0.5) 0%,
+        rgba(120, 40, 71, 0.1) 100%
+    );
+    border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+/* ============================================================
+   Status Message Section
+   ============================================================ */
+
+.status-message {
+    background: linear-gradient(135deg, rgba(219, 234, 254, 0.5), rgba(240, 249, 255, 0.3));
+    border-left: 4px solid #3b82f6;
+    animation: slide-in-left 0.5s ease-out;
+}
+
+.dark .status-message {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.5));
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================================
+   Button Styles
+   ============================================================ */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 
+        background-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Admin Control Panel Buttons */
+.admin-panel button {
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-panel button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.admin-panel button:active::before {
+    width: 100px;
+    height: 100px;
+}
+
+/* ============================================================
+   Mobile Responsive Adjustments
+   ============================================================ */
+
+@media (max-width: 640px) {
+    body {
+        font-size: 14px;
+    }
+    
+    main {
+        padding-bottom: 200px;
+    }
+    
+    header nav {
+        padding: 1rem 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.25rem;
+    }
+    
+    header p {
+        font-size: 0.625rem;
+    }
+    
+    .order-summary-card {
+        padding: 1.25rem !important;
+    }
+    
+    /* Mobile stepper vertical layout */
+    [data-step] {
+        width: 100%;
+    }
+    
+    #progressLine {
+        display: none;
+    }
+}
+
+/* ============================================================
+   Accessibility Improvements
+   ============================================================ */
+
+/* Focus Visible States */
+button:focus-visible {
+    outline: 2px solid var(--color-primary-pink);
+    outline-offset: 2px;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--color-primary-pink);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+
+@media print {
+    header,
+    footer,
+    .admin-panel {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .order-summary-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}
+
+/* ============================================================
+   Loading State & Transitions
+   ============================================================ */
+
+.fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fade-out 0.3s ease-out forwards;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ============================================================
+   SVG Icon Animations
+   ============================================================ */
+
+svg {
+    transition: transform var(--transition-base), color var(--transition-base);
+}
+
+[data-step]:hover svg {
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   Admin Control Panel Styling
+   ============================================================ */
+
+.admin-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(17, 24, 39, 0.98) 0%,
+        rgba(31, 41, 55, 0.95) 50%,
+        rgba(55, 65, 81, 0.85) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(75, 85, 99, 0.3);
+    z-index: 40;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.dark .admin-panel {
+    background: linear-gradient(
+        to top,
+        rgba(3, 7, 18, 0.98) 0%,
+        rgba(15, 23, 42, 0.95) 50%,
+        rgba(30, 41, 59, 0.85) 100%
+    );
+    border-top: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+/* ============================================================
+   Footer Styling
+   ============================================================ */
+
+footer {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.dark footer {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+footer a {
+    position: relative;
+    text-decoration: none;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primary-rose-gold);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+    transform-origin: right;
+}
+
+footer a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ============================================================
+   Color Palette Swatches (for reference & consistency)
+   ============================================================ */
+
+/*
+   Primary Colors:
+   - Pink:          #ec4899
+   - Rose Gold:     #d4a574
+   - Emerald:       #10b981
+   - Emerald Dark:  #059669
+   
+   Light Mode:
+   - Background:    #fafaf9
+   - Text:          #1f2937
+   - Border:        #f3f4f6
+   
+   Dark Mode:
+   - Background:    #0f172a
+   - Text:          #f1f5f9
+   - Border:        #334155
+*/
+
+/* ============================================================
+   Performance Optimization
+   ============================================================ */
+
+/* GPU Acceleration for animations */
+.step-active,
+.step-completed,
+[data-step] {
+    will-change: transform, box-shadow;
+    transform: translateZ(0);
+}
+
+/* Optimize backdrop-filter performance */
+header,
+.order-summary-card,
+footer {
+    will-change: backdrop-filter;
+}
+
+/* ============================================================
+   End of Stylesheet
+   ============================================================ */
